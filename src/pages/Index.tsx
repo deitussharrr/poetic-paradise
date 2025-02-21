@@ -11,6 +11,7 @@ import { useToast } from "@/components/ui/use-toast";
 const Index = () => {
   const [poems, setPoems] = useState<Poem[]>([]);
   const [isAuth, setIsAuth] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -31,30 +32,54 @@ const Index = () => {
     setPoems(getPoems());
   };
 
-  if (!isAuth) {
+  if (showLogin) {
     return (
       <div className="min-h-screen flex items-center justify-center p-4">
-        <LoginForm onSuccess={() => setIsAuth(true)} />
+        <LoginForm onSuccess={() => {
+          setIsAuth(true);
+          setShowLogin(false);
+        }} />
       </div>
     );
   }
 
   return (
     <div className="min-h-screen p-4 md:p-8 max-w-4xl mx-auto space-y-8">
-      <header className="flex items-center justify-between">
-        <div>
-          <h1 className="text-4xl font-century-gothic text-white neon-glow">Poetic Paradise</h1>
-          <p className="text-white/60">Welcome back, {getCurrentUser()}</p>
+      <header className="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="text-center md:text-left">
+          <h1 className="text-4xl font-century-gothic text-white neon-glow">Astraeus | Poetry</h1>
+          <p className="text-white/60">
+            {isAuth ? `Welcome back, ${getCurrentUser()}` : "A collection of poetic excellence"}
+          </p>
         </div>
-        <Button
-          onClick={handleLogout}
-          className="glass-effect hover:bg-white/10 text-white transition-all"
-        >
-          Logout
-        </Button>
+        <div className="flex items-center gap-4">
+          <a
+            href="https://astraeusmedia.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="glass-effect px-4 py-2 text-white hover:bg-white/10 transition-all rounded-md text-sm"
+          >
+            Main Site
+          </a>
+          {isAuth ? (
+            <Button
+              onClick={handleLogout}
+              className="glass-effect hover:bg-white/10 text-white transition-all"
+            >
+              Logout
+            </Button>
+          ) : (
+            <Button
+              onClick={() => setShowLogin(true)}
+              className="glass-effect hover:bg-white/10 text-white transition-all"
+            >
+              Admin Login
+            </Button>
+          )}
+        </div>
       </header>
       
-      <AddPoem onAdd={refreshPoems} />
+      {isAuth && <AddPoem onAdd={refreshPoems} />}
       
       <div className="space-y-6">
         {poems.map((poem) => (
