@@ -48,7 +48,7 @@ const Index = () => {
       <header className="flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="text-center md:text-left flex items-center gap-4">
           <img 
-            src="https://github.com/deitussharrr/poetic-paradise.git" 
+            src="https://iili.io/39N2Eaj.png" 
             alt="Astraeus Logo" 
             className="w-10 h-10"
           />
