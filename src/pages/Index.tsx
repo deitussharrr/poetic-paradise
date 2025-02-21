@@ -62,7 +62,6 @@ const Index = () => {
         <div className="flex items-center gap-4">
           <a
             href="https://astraeusmedia.vercel.app"
-            target="_blank"
             rel="noopener noreferrer"
             className="glass-effect px-4 py-2 text-white hover:bg-white/10 transition-all rounded-md text-sm"
           >
