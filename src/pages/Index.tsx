@@ -52,7 +52,7 @@ const Index = () => {
             alt="Astraeus Logo" 
             className="w-10 h-10"
           />
-          <h1 className="text-4xl font-century-gothic text-white neon-glow">ASTRAEUS POETRY</h1>
+          <h1 className="text-4xl font-century-gothic text-white neon-glow">ASTRAEUS | POETRY</h1>
           {isAuth && (
             <p className="text-white/60 mt-2">
               Welcome back, {getCurrentUser()}
