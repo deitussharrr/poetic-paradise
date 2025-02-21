@@ -46,11 +46,18 @@ const Index = () => {
   return (
     <div className="min-h-screen p-4 md:p-8 max-w-4xl mx-auto space-y-8">
       <header className="flex flex-col md:flex-row items-center justify-between gap-4">
-        <div className="text-center md:text-left">
-          <h1 className="text-4xl font-century-gothic text-white neon-glow">Astraeus | Poetry</h1>
-          <p className="text-white/60">
-            {isAuth ? `Welcome back, ${getCurrentUser()}` : "A collection of poetic excellence"}
-          </p>
+        <div className="text-center md:text-left flex items-center gap-4">
+          <img 
+            src="/placeholder.svg" 
+            alt="Astraeus Logo" 
+            className="w-10 h-10"
+          />
+          <h1 className="text-4xl font-century-gothic text-white neon-glow">ASTRAEUS POETRY</h1>
+          {isAuth && (
+            <p className="text-white/60 mt-2">
+              Welcome back, {getCurrentUser()}
+            </p>
+          )}
         </div>
         <div className="flex items-center gap-4">
           <a
@@ -59,7 +66,7 @@ const Index = () => {
             rel="noopener noreferrer"
             className="glass-effect px-4 py-2 text-white hover:bg-white/10 transition-all rounded-md text-sm"
           >
-            Main Site
+            Home
           </a>
           {isAuth ? (
             <Button
