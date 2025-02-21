@@ -83,7 +83,7 @@ const Index = () => {
       
       <div className="space-y-6">
         {poems.map((poem) => (
-          <PoemCard key={poem.id} poem={poem} />
+          <PoemCard key={poem.id} poem={poem} onDelete={refreshPoems} />
         ))}
         {poems.length === 0 && (
           <p className="text-center text-white/60 py-8">No poems yet. Be the first to share!</p>

@@ -22,3 +22,9 @@ export const addPoem = (poem: Omit<Poem, "id" | "createdAt">): void => {
   poems.unshift(newPoem);
   localStorage.setItem("poems", JSON.stringify(poems));
 };
+
+export const deletePoem = (id: string): void => {
+  const poems = getPoems();
+  const filteredPoems = poems.filter(poem => poem.id !== id);
+  localStorage.setItem("poems", JSON.stringify(filteredPoems));
+};
